@@ -223,3 +223,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize first form as active
     document.getElementById('book-form').classList.add('active');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all tab buttons and tab panes
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+  
+    // Function to switch tabs
+    function switchTab(targetTabId) {
+      // Remove active class from all buttons and panes
+      tabButtons.forEach(button => button.classList.remove('active'));
+      tabPanes.forEach(pane => pane.classList.remove('active'));
+  
+      // Add active class to clicked button and corresponding pane
+      const activeButton = document.querySelector(`.tab-btn[data-target="${targetTabId}"]`);
+      const activePane = document.getElementById(targetTabId);
+      
+      if (activeButton && activePane) {
+        activeButton.classList.add('active');
+        activePane.classList.add('active');
+      }
+    }
+  
+    // Add click event listeners to all tab buttons
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetTabId = this.getAttribute('data-target');
+        switchTab(targetTabId);
+      });
+    });
+  
+    // Initialize with the first tab active (in case it's not already set in HTML)
+    if (tabButtons.length > 0 && tabPanes.length > 0) {
+      const firstTabId = tabButtons[0].getAttribute('data-target');
+      switchTab(firstTabId);
+    }
+  });
