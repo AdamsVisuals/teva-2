@@ -1735,3 +1735,353 @@ body {
     font-size: 1.6rem;
   }
 }
+
+:root {
+  --primary: #2e8b57;
+  --primary-dark: #1f6e4a;
+  --primary-light: #e8f5ee;
+  --accent: #f7b733;
+  --text-dark: #2d3748;
+  --text-light: #ffffff;
+  --text-muted: #718096;
+  --light-bg: #f8f9fa;
+  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --border-radius: 8px;
+  --shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Sustainability Section */
+.sustainability-section {
+  padding: 6rem 0;
+  background-color: white;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.subtitle {
+  display: inline-block;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* Initiatives Grid */
+.initiatives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.initiative-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.initiative-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.initiative-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: var(--primary);
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.initiative-card:hover::before {
+  height: 100%;
+}
+
+.initiative-icon {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1.5rem;
+}
+
+.initiative-icon i {
+  position: relative;
+  z-index: 2;
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+
+.icon-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-light);
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.initiative-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.initiative-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+  transition: width 1.5s ease;
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Impact Statement */
+.impact-statement {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.impact-content {
+  padding: 3rem 2rem;
+  order: 2;
+}
+
+.impact-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.impact-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.impact-stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.impact-image {
+  position: relative;
+  order: 1;
+  height: 300px;
+}
+
+.impact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Section Footer */
+.section-footer {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.5rem;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: 0 5px 20px rgba(46, 139, 87, 0.3);
+}
+
+.cta-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(46, 139, 87, 0.4);
+}
+
+.cta-button i {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .initiatives-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .impact-statement {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .impact-content {
+    flex: 1;
+    order: 1;
+    padding: 4rem;
+  }
+  
+  .impact-image {
+    flex: 1;
+    order: 2;
+    height: auto;
+    min-height: 400px;
+  }
+  
+  .impact-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .initiatives-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .impact-content h3 {
+    font-size: 2.2rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .sustainability-section {
+    padding: 4rem 0;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .initiatives-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .impact-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .impact-stat {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    min-width: 80px;
+  }
+}
