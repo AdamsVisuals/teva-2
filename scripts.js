@@ -259,3 +259,103 @@ document.addEventListener('DOMContentLoaded', function() {
       switchTab(firstTabId);
     }
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articleCards = document.querySelectorAll('.article-card'); // Assuming you have article cards
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.dataset.category;
+            
+            // Filter articles (example implementation)
+            articleCards.forEach(card => {
+                if (filterValue === 'all' || card.dataset.category === filterValue) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 200);
+                }
+            });
+        });
+    });
+    
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    const searchBtn = document.querySelector('.search-btn');
+    
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        articleCards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const excerpt = card.querySelector('.card-excerpt').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 200);
+            }
+        });
+    }
+    
+    searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+    
+    searchBtn.addEventListener('click', performSearch);
+    
+    // Smooth scroll for filter buttons on mobile
+    function centerActiveFilter() {
+        if (window.innerWidth < 768) {
+            const activeFilter = document.querySelector('.filter-btn.active');
+            if (activeFilter) {
+                activeFilter.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        }
+    }
+    
+    // Initialize
+    centerActiveFilter();
+    window.addEventListener('resize', centerActiveFilter);
+    
+    // Article card animations
+    articleCards.forEach((card, index) => {
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 100 + index * 50);
+    });
+});

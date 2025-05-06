@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teva Eco Travel - Home</title>
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./favicon_io" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon_io" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="safari & tours.html">Safari & Tours</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Artboard 3 (1).png" alt="Teva Eco Travel Logo" class="logo-img">
+                </a>
+            </div>
+            
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="safariandtours.html">Safari & Tours</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li class="nav-cta"><a href="booking.html" class="cta-button">Book Now</a></li>
+                </ul>
+            </div>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+        
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Experiences</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Stories</a></li>
+                <li><a href="#" class="mobile-cta">Book Now</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="blog-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">The Teva Travel Journal</h1>
+            <p class="hero-subtitle">Curated wisdom for the conscious explorer</p>
+            <div class="hero-scroll">
+                <span>Explore Insights</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <video autoplay muted loop class="hero-video">
+            <source src="images/TANZANIA EXPOSED- The Untold Secrets Between Luxury Hotels and Wild Safari.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <section class="blog-filters">
+        <div class="container">
+            <div class="filter-group">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">
+                        All Articles
+                    </button>
+                    <button class="filter-btn" data-category="wildlife">
+                        Wildlife
+                    </button>
+                    <button class="filter-btn" data-category="culture">
+                        Culture
+                    </button>
+                    <button class="filter-btn" data-category="conservation">
+                        Conservation
+                    </button>
+                    <button class="filter-btn" data-category="tips">
+                        Travel Tips
+                    </button>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search articles..." class="search-input">
+                <button class="search-btn" aria-label="Search">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-article">
+        <div class="container">
+            <div class="featured-content">
+                <span class="article-badge">Editor's Pick</span>
+                <h2 class="article-title">Ethical Wildlife Encounters: A Guide to Responsible Safari Practices</h2>
+                <p class="article-excerpt">Discover how to experience Africa's magnificent wildlife while ensuring your visit supports conservation efforts and local communities. Our comprehensive guide covers everything from proper viewing distances to selecting ethical tour operators.</p>
+                <div class="article-meta">
+                    <span class="meta-item"><i class="far fa-clock"></i> 12 min read</span>
+                    <span class="meta-item"><i class="far fa-calendar-alt"></i> June 18, 2024</span>
+                </div>
+                <a href="#" class="article-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1550358864-518f202c02ba" alt="Lion in savanna">
+                <div class="image-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-grid">
+        <div class="container">
+            <div class="grid-header">
+                <h3 class="grid-title">Latest Stories</h3>
+                <div class="grid-controls">
+                    <button class="control-btn active">Newest</button>
+                    <button class="control-btn">Popular</button>
+                </div>
+            </div>
+
+            <div class="articles-container">
+                <article class="article-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53" alt="Elephants at sunset">
+                        <span class="card-category">Wildlife</span>
+                        <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">The Great Migration: Understanding Nature's Greatest Spectacle</h4>
+                        <p class="card-excerpt">Follow the journey of over 1.5 million wildebeest across the Serengeti-Mara ecosystem and learn the best times and locations to witness this natural wonder responsibly.</p>
+                        <div class="card-footer">
+                            <span class="read-time">8 min read</span>
+                            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35" alt="Packing for safari">
+                        <span class="card-category">Travel Tips</span>
+                        <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">The Ultimate Eco-Conscious Safari Packing List</h4>
+                        <p class="card-excerpt">Our carefully curated guide to sustainable packing for your African adventure, featuring biodegradable products, solar-powered gear, and ethical clothing choices.</p>
+                        <div class="card-footer">
+                            <span class="read-time">6 min read</span>
+                            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581434682229-1434629b7289" alt="Maasai culture">
+                        <span class="card-category">Culture</span>
+                        <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Cultural Immersion: Visiting Maasai Communities with Respect</h4>
+                        <p class="card-excerpt">Learn the protocols for meaningful cultural exchanges with Tanzania's indigenous communities while supporting local economies and preserving traditions.</p>
+                        <div class="card-footer">
+                            <span class="read-time">9 min read</span>
+                            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995" alt="Eco lodge">
+                        <span class="card-category">Conservation</span>
+                        <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Lodges Leading the Way in Sustainable Tourism</h4>
+                        <p class="card-excerpt">Discover the safari camps and lodges setting new standards in eco-tourism, from zero-waste policies to community empowerment initiatives.</p>
+                        <div class="card-footer">
+                            <span class="read-time">7 min read</span>
+                            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5" alt="Safari vehicle">
+                        <span class="card-category">Travel Tips</span>
+                        <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Choosing the Right Safari: Private vs Group Tours Compared</h4>
+                        <p class="card-excerpt">We break down the pros and cons of different safari styles to help you select the perfect experience matching your travel values and preferences.</p>
+                        <div class="card-footer">
+                            <span class="read-time">5 min read</span>
+                            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1536152470836-b943b246224c" alt="Bird watching">
+                        <span class="card-category">Wildlife</span>
+                        <button class="bookmark-btn"><i class="far fa-bookmark"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Tanzania's Avian Wonders: A Birder's Paradise</h4>
+                        <p class="card-excerpt">With over 1,100 bird species, Tanzania offers incredible birdwatching opportunities. Learn the best seasons and locations for spotting rare and endemic species.</p>
+                        <div class="card-footer">
+                            <span class="read-time">10 min read</span>
+                            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="load-more">
+                <button class="load-btn">Load More Stories</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="travel-guides">
+        <div class="container">
+            <div class="guides-header">
+                <h3 class="guides-title">Essential Travel Guides</h3>
+                <p class="guides-subtitle">Practical information for your Tanzania adventure</p>
+            </div>
+
+            <div class="guides-grid">
+                <div class="guide-card">
+                    <div class="guide-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h4 class="guide-card-title">Best Times to Visit</h4>
+                    <ul class="guide-list">
+                        <li>Wildlife Viewing: June-October</li>
+                        <li>Great Migration: Year-round</li>
+                        <li>Kilimanjaro: January-March</li>
+                        <li>Bird Watching: November-April</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon"><i class="fas fa-passport"></i></div>
+                    <h4 class="guide-card-title">Travel Requirements</h4>
+                    <ul class="guide-list">
+                        <li>Visa information</li>
+                        <li>Vaccinations</li>
+                        <li>Currency details</li>
+                        <li>Luggage restrictions</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon"><i class="fas fa-suitcase"></i></div>
+                    <h4 class="guide-card-title">Packing Essentials</h4>
+                    <ul class="guide-list">
+                        <li>Seasonal clothing</li>
+                        <li>Camera gear</li>
+                        <li>First aid items</li>
+                        <li>Travel documents</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h4 class="guide-card-title">Health & Safety</h4>
+                    <ul class="guide-list">
+                        <li>Malaria prevention</li>
+                        <li>Travel insurance</li>
+                        <li>Emergency contacts</li>
+                        <li>Wildlife safety</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
