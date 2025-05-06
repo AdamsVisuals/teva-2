@@ -854,6 +854,7 @@ body {
       font-size: 20px;
   }
 }
+
 :root {
   --primary: #2e8b57;
   --primary-dark: #1f6e4a;
@@ -967,7 +968,7 @@ body {
 
 .experience-badge small {
   font-size: 0.8rem;
-  color: var(--text-light);
+  color: var(--text-dark);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -1005,21 +1006,21 @@ body {
 .compact-value span {
   font-size: 0.8rem;
   line-height: 1.4;
-  color: var(--text);
+  color: var(--text-dark);
 }
 
 /* Story Section */
 .story-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
-  color: var(--text);
+  color: var(--text-dark);
   margin-bottom: 20px;
 }
 
 .story-text {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: var(--text-light);
+  color: var(--text-dark);
   margin-bottom: 25px;
 }
 
