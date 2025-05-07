@@ -251,15 +251,6 @@
     --light-gray: #E8E8E8;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--dark);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: var(--light);
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
