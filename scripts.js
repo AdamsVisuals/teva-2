@@ -261,43 +261,84 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.addEventListener('DOMContentLoaded', function() {
-    // Filter functionality
+    // DOM Elements
+    const articlesContainer = document.querySelector('.articles-container');
+    const articleCards = document.querySelectorAll('.article-card');
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const articleCards = document.querySelectorAll('.article-card'); // Assuming you have article cards
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const filterValue = this.dataset.category;
-            
-            // Filter articles (example implementation)
-            articleCards.forEach(card => {
-                if (filterValue === 'all' || card.dataset.category === filterValue) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(10px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 200);
-                }
-            });
-        });
-    });
-    
-    // Search functionality
+    const sortButtons = document.querySelectorAll('.control-btn');
     const searchInput = document.querySelector('.search-input');
     const searchBtn = document.querySelector('.search-btn');
+    const loadMoreBtn = document.querySelector('.load-btn');
+    const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
+
+    // Initial setup
+    let visibleArticles = 6; // Initial number of visible articles
+    const totalArticles = articleCards.length;
     
+    // Add data attributes for filtering/sorting
+    articleCards.forEach((card, index) => {
+        card.dataset.index = index;
+        card.dataset.popularity = Math.floor(Math.random() * 100); // Simulate popularity
+    });
+
+    // Bookmark functionality
+    bookmarkButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const icon = this.querySelector('i');
+            icon.classList.toggle('far');
+            icon.classList.toggle('fas');
+            
+            // Toggle aria-label for accessibility
+            const isBookmarked = icon.classList.contains('fas');
+            this.setAttribute('aria-label', isBookmarked ? 'Remove bookmark' : 'Add bookmark');
+            
+            // Add visual feedback
+            this.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
+            
+            // Here you would typically save to localStorage or make an API call
+        });
+    });
+
+    // Filter articles by category
+    function filterArticles(category) {
+        articleCards.forEach(card => {
+            const cardCategory = card.querySelector('.card-category').textContent.toLowerCase();
+            
+            if (category === 'all' || cardCategory === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Reset visible articles count when filtering
+        visibleArticles = 6;
+        updateLoadMoreButton();
+    }
+
+    // Sort articles (newest or popular)
+    function sortArticles(sortBy) {
+        const cardsArray = Array.from(articleCards);
+        
+        cardsArray.sort((a, b) => {
+            if (sortBy === 'newest') {
+                return parseInt(a.dataset.index) - parseInt(b.dataset.index);
+            } else { // popular
+                return parseInt(b.dataset.popularity) - parseInt(a.dataset.popularity);
+            }
+        });
+
+        // Re-append sorted articles
+        cardsArray.forEach(card => {
+            articlesContainer.appendChild(card);
+        });
+    }
+
+    // Search functionality
     function performSearch() {
         const searchTerm = searchInput.value.toLowerCase();
         
@@ -307,55 +348,105 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
                 card.style.display = 'block';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 10);
             } else {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(10px)';
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 200);
+                card.style.display = 'none';
+            }
+        });
+        
+        // Reset visible articles count when searching
+        visibleArticles = 6;
+        updateLoadMoreButton();
+    }
+
+    // Load more articles
+    function loadMoreArticles() {
+        visibleArticles += 3;
+        updateVisibleArticles();
+        updateLoadMoreButton();
+        
+        // Smooth scroll to newly loaded articles
+        setTimeout(() => {
+            const newArticles = document.querySelectorAll(`.article-card:nth-child(n+${visibleArticles - 2})`);
+            if (newArticles.length > 0) {
+                newArticles[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }, 50);
+    }
+
+    // Update visible articles based on current count
+    function updateVisibleArticles() {
+        articleCards.forEach((card, index) => {
+            if (index < visibleArticles) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
             }
         });
     }
-    
+
+    // Update load more button state
+    function updateLoadMoreButton() {
+        if (visibleArticles >= totalArticles) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'block';
+        }
+    }
+
+    // Event listeners
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter articles
+            filterArticles(this.dataset.category);
+        });
+    });
+
+    sortButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active state
+            sortButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Sort articles
+            sortArticles(this.textContent.toLowerCase());
+        });
+    });
+
     searchInput.addEventListener('keyup', function(e) {
         if (e.key === 'Enter') {
             performSearch();
         }
     });
-    
+
     searchBtn.addEventListener('click', performSearch);
-    
-    // Smooth scroll for filter buttons on mobile
-    function centerActiveFilter() {
-        if (window.innerWidth < 768) {
-            const activeFilter = document.querySelector('.filter-btn.active');
-            if (activeFilter) {
-                activeFilter.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                    inline: 'center'
-                });
-            }
-        }
-    }
-    
+    loadMoreBtn.addEventListener('click', loadMoreArticles);
+
     // Initialize
-    centerActiveFilter();
-    window.addEventListener('resize', centerActiveFilter);
-    
-    // Article card animations
-    articleCards.forEach((card, index) => {
-        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    updateVisibleArticles();
+    updateLoadMoreButton();
+
+    // Add animation on scroll
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    articleCards.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, 100 + index * 50);
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        observer.observe(card);
     });
 });
